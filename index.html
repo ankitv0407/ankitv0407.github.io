@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ankit Verma — Data Scientist & ML Engineer</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d1117;
+      --bg2: #161b22;
+      --bg3: #21262d;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent2: #3fb950;
+      --accent3: #f78166;
+      --purple: #bc8cff;
+      --yellow: #e3b341;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(13,17,23,.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -.5px;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .9rem;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+    }
+
+    .section-label {
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .75rem;
+    }
+
+    h2.section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      color: var(--text);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 80px;
+    }
+
+    .hero-greeting {
+      font-size: .95rem;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: .5rem;
+    }
+
+    .hero-name {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.05;
+      margin-bottom: .5rem;
+    }
+
+    .hero-title {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-weight: 400;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title span {
+      color: var(--accent2);
+      font-weight: 600;
+    }
+
+    .hero-bio {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .6rem 1.4rem;
+      border-radius: 6px;
+      font-size: .9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0d1117;
+    }
+
+    .btn-primary:hover { background: #79c0ff; }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-scroll {
+      margin-top: 4rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    .scroll-line {
+      width: 40px;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .skill-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .skill-card h3 {
+      font-size: .85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: .75rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: .2rem .65rem;
+      border-radius: 99px;
+      font-size: .78rem;
+      font-weight: 500;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .tag.green { border-color: #238636; color: var(--accent2); }
+    .tag.blue  { border-color: #1f6feb; color: var(--accent); }
+    .tag.purple { border-color: #6e40c9; color: var(--purple); }
+    .tag.yellow { border-color: #9e6a03; color: var(--yellow); }
+    .tag.red   { border-color: #b62324; color: var(--accent3); }
+
+    /* ── EXPERIENCE ── */
+    .timeline { position: relative; padding-left: 1.5rem; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: .5rem; bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 2.5rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.5rem;
+      top: .45rem;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+
+    .timeline-meta {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      flex-wrap: wrap;
+      margin-bottom: .3rem;
+    }
+
+    .timeline-date {
+      font-size: .78rem;
+      color: var(--muted);
+      background: var(--bg3);
+      padding: .1rem .6rem;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+    }
+
+    .timeline-company {
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--accent2);
+    }
+
+    .timeline-role {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+
+    .timeline-desc {
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.75;
+    }
+
+    .timeline-desc li {
+      margin-bottom: .3rem;
+      padding-left: .25rem;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .project-icon {
+      font-size: 1.5rem;
+    }
+
+    .project-links { display: flex; gap: .5rem; }
+
+    .project-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .8rem;
+      display: flex;
+      align-items: center;
+      gap: .25rem;
+      padding: .25rem .6rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: all .2s;
+    }
+
+    .project-links a:hover { color: var(--accent); border-color: var(--accent); }
+
+    .project-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .project-desc {
+      color: var(--muted);
+      font-size: .88rem;
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    /* ── CONTACT ── */
+    #contact { text-align: center; }
+
+    .contact-desc {
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 500;
+      padding: .6rem 1.2rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: all .2s;
+    }
+
+    .social-link:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      section { padding: 5rem 1.25rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">AV<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-greeting">Hi, I'm</p>
+  <h1 class="hero-name">Ankit Verma</h1>
+  <p class="hero-title">Data Scientist &amp; <span>ML Engineer</span></p>
+  <p class="hero-bio">
+    I build intelligent systems that turn messy data into clear decisions.
+    From exploratory analysis to production ML pipelines — I work across
+    the full data-to-value stack.
+  </p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn btn-primary">View my work</a>
+    <a href="#contact" class="btn btn-outline">Get in touch</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>scroll down</span>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">What I work with</p>
+  <h2 class="section-title">Skills &amp; Tech Stack</h2>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3>Languages</h3>
+      <div class="tags">
+        <span class="tag blue">Python</span>
+        <span class="tag blue">SQL</span>
+        <span class="tag blue">R</span>
+        <span class="tag blue">Bash</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3>ML / AI</h3>
+      <div class="tags">
+        <span class="tag purple">PyTorch</span>
+        <span class="tag purple">TensorFlow</span>
+        <span class="tag purple">scikit-learn</span>
+        <span class="tag purple">HuggingFace</span>
+        <span class="tag purple">LangChain</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3>Data &amp; Analysis</h3>
+      <div class="tags">
+        <span class="tag green">Pandas</span>
+        <span class="tag green">NumPy</span>
+        <span class="tag green">Spark</span>
+        <span class="tag green">Dask</span>
+        <span class="tag green">Polars</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3>MLOps &amp; Cloud</h3>
+      <div class="tags">
+        <span class="tag yellow">AWS</span>
+        <span class="tag yellow">GCP</span>
+        <span class="tag yellow">Docker</span>
+        <span class="tag yellow">MLflow</span>
+        <span class="tag yellow">Airflow</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3>Databases</h3>
+      <div class="tags">
+        <span class="tag red">PostgreSQL</span>
+        <span class="tag red">BigQuery</span>
+        <span class="tag red">Snowflake</span>
+        <span class="tag red">MongoDB</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3>Visualization</h3>
+      <div class="tags">
+        <span class="tag">Matplotlib</span>
+        <span class="tag">Seaborn</span>
+        <span class="tag">Plotly</span>
+        <span class="tag">Tableau</span>
+        <span class="tag">Power BI</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">Where I've been</p>
+  <h2 class="section-title">Work Experience</h2>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-meta">
+        <span class="timeline-date">2023 – Present</span>
+        <span class="timeline-company">Your Current Company</span>
+      </div>
+      <div class="timeline-role">Senior Data Scientist</div>
+      <ul class="timeline-desc">
+        <li>Built and deployed end-to-end ML pipelines that improved prediction accuracy by X%.</li>
+        <li>Led a team of N analysts to deliver a real-time recommendation system serving M users/day.</li>
+        <li>Designed data infrastructure reducing query latency by X% across core dashboards.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-meta">
+        <span class="timeline-date">2021 – 2023</span>
+        <span class="timeline-company">Previous Company</span>
+      </div>
+      <div class="timeline-role">Data Scientist</div>
+      <ul class="timeline-desc">
+        <li>Developed NLP models to classify customer feedback, reducing manual review time by X%.</li>
+        <li>Built A/B testing framework enabling data-driven product decisions across N experiments/quarter.</li>
+        <li>Automated ETL workflows using Airflow, saving ~X hours of manual work per week.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-meta">
+        <span class="timeline-date">2019 – 2021</span>
+        <span class="timeline-company">Early Company / Internship</span>
+      </div>
+      <div class="timeline-role">Data Analyst</div>
+      <ul class="timeline-desc">
+        <li>Conducted exploratory analysis on large datasets to surface business insights.</li>
+        <li>Built dashboards in Tableau/Power BI used by executive stakeholders.</li>
+        <li>Collaborated with engineering teams to define data schemas and KPI definitions.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">Things I've built</p>
+  <h2 class="section-title">Projects</h2>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-icon">🤖</span>
+        <div class="project-links">
+          <a href="https://github.com/ankitv0407" target="_blank">↗ GitHub</a>
+        </div>
+      </div>
+      <div class="project-title">LLM-Powered Data Assistant</div>
+      <p class="project-desc">
+        A conversational interface for querying structured databases using natural language.
+        Built with LangChain + GPT-4, with SQL generation and result summarization.
+      </p>
+      <div class="tags">
+        <span class="tag blue">Python</span>
+        <span class="tag purple">LangChain</span>
+        <span class="tag red">PostgreSQL</span>
+        <span class="tag">FastAPI</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-icon">📈</span>
+        <div class="project-links">
+          <a href="https://github.com/ankitv0407" target="_blank">↗ GitHub</a>
+        </div>
+      </div>
+      <div class="project-title">Time-Series Anomaly Detection</div>
+      <p class="project-desc">
+        Real-time anomaly detection system for IoT sensor streams using an LSTM autoencoder.
+        Deployed on AWS Lambda with alerting via SNS.
+      </p>
+      <div class="tags">
+        <span class="tag purple">PyTorch</span>
+        <span class="tag yellow">AWS</span>
+        <span class="tag blue">Python</span>
+        <span class="tag">LSTM</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-icon">🔍</span>
+        <div class="project-links">
+          <a href="https://github.com/ankitv0407" target="_blank">↗ GitHub</a>
+        </div>
+      </div>
+      <div class="project-title">Customer Churn Predictor</div>
+      <p class="project-desc">
+        End-to-end churn prediction pipeline with XGBoost, SHAP explainability, and a Streamlit
+        dashboard for business stakeholders to explore risk segments.
+      </p>
+      <div class="tags">
+        <span class="tag purple">scikit-learn</span>
+        <span class="tag green">Pandas</span>
+        <span class="tag">XGBoost</span>
+        <span class="tag">Streamlit</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-icon">💬</span>
+        <div class="project-links">
+          <a href="https://github.com/ankitv0407" target="_blank">↗ GitHub</a>
+        </div>
+      </div>
+      <div class="project-title">Sentiment Analysis Pipeline</div>
+      <p class="project-desc">
+        Fine-tuned BERT model for domain-specific sentiment classification. Includes a data labeling
+        pipeline, training loop with MLflow tracking, and REST API inference endpoint.
+      </p>
+      <div class="tags">
+        <span class="tag purple">HuggingFace</span>
+        <span class="tag purple">PyTorch</span>
+        <span class="tag yellow">MLflow</span>
+        <span class="tag blue">Python</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Let's connect</p>
+  <h2 class="section-title">Get In Touch</h2>
+  <p class="contact-desc">
+    I'm open to interesting problems, collaborations, and full-time opportunities.
+    The best way to reach me is via email or LinkedIn.
+  </p>
+
+  <div class="social-links">
+    <a href="mailto:ankit.vrm2@gmail.com" class="social-link">
+      ✉ ankit.vrm2@gmail.com
+    </a>
+    <a href="https://github.com/ankitv0407" target="_blank" class="social-link">
+      ⌥ GitHub
+    </a>
+    <a href="https://linkedin.com/in/ankitv0407" target="_blank" class="social-link">
+      in LinkedIn
+    </a>
+  </div>
+
+  <a href="mailto:ankit.vrm2@gmail.com" class="btn btn-primary">Say hello →</a>
+</section>
+
+<footer>
+  <p>Designed &amp; built by <a href="https://github.com/ankitv0407">Ankit Verma</a> · 2025</p>
+</footer>
+
+</body>
+</html>
