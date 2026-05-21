@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ankit Verma — Resume</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d1117;
+      --bg2: #161b22;
+      --bg3: #21262d;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent2: #3fb950;
+      --purple: #bc8cff;
+      --yellow: #e3b341;
+      --accent3: #f78166;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(13,17,23,.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -.5px;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .9rem;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-links a.active { color: var(--accent); }
+
+    /* ── LAYOUT ── */
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 90px 2rem 4rem;
+    }
+
+    /* ── HEADER ── */
+    .resume-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .resume-header-left h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin-bottom: .25rem;
+    }
+
+    .resume-header-left .title {
+      font-size: 1.1rem;
+      color: var(--accent2);
+      font-weight: 600;
+      margin-bottom: .5rem;
+    }
+
+    .resume-header-left .subtitle {
+      font-size: .88rem;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.6;
+    }
+
+    .resume-header-right {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      align-items: flex-end;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .85rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .contact-item:hover { color: var(--accent); }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      margin-top: .5rem;
+      padding: .5rem 1.1rem;
+      background: var(--accent);
+      color: #0d1117;
+      font-size: .85rem;
+      font-weight: 700;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background .2s;
+    }
+
+    .btn-download:hover { background: #79c0ff; }
+
+    /* ── SECTION ── */
+    .section { margin-bottom: 2.5rem; }
+
+    .section-heading {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-bottom: .5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── EXPERIENCE ── */
+    .job { margin-bottom: 2rem; }
+
+    .job-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: .2rem;
+    }
+
+    .job-company {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .job-company span {
+      color: var(--accent2);
+    }
+
+    .job-meta {
+      text-align: right;
+      font-size: .82rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .job-role {
+      font-size: .92rem;
+      color: var(--muted);
+      margin-bottom: .75rem;
+    }
+
+    /* ── PROJECT BLOCK ── */
+    .project-block {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-block:last-child { margin-bottom: 0; }
+
+    .project-block-title {
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: .1rem;
+    }
+
+    .project-block-role {
+      font-size: .78rem;
+      color: var(--accent);
+      margin-bottom: .6rem;
+    }
+
+    .project-block ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .project-block li {
+      font-size: .87rem;
+      color: var(--muted);
+      line-height: 1.7;
+      padding-left: 1rem;
+      position: relative;
+      margin-bottom: .2rem;
+    }
+
+    .project-block li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent2);
+      font-size: .75rem;
+      top: .1rem;
+    }
+
+    /* highlight numbers */
+    .project-block li strong {
+      color: var(--yellow);
+      font-weight: 600;
+    }
+
+    /* ── IMPACT BADGES ── */
+    .impact-row {
+      display: flex;
+      gap: .6rem;
+      flex-wrap: wrap;
+      margin-bottom: .75rem;
+    }
+
+    .impact-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      font-size: .78rem;
+      font-weight: 600;
+      padding: .25rem .75rem;
+      border-radius: 99px;
+      background: #1c2b1e;
+      border: 1px solid #238636;
+      color: var(--accent2);
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: .75rem;
+    }
+
+    .skill-row { display: flex; flex-direction: column; gap: .4rem; }
+
+    .skill-label {
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: .18rem .6rem;
+      border-radius: 99px;
+      font-size: .78rem;
+      font-weight: 500;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .tag.blue   { border-color: #1f6feb; color: var(--accent); }
+    .tag.green  { border-color: #238636; color: var(--accent2); }
+    .tag.yellow { border-color: #9e6a03; color: var(--yellow); }
+    .tag.purple { border-color: #6e40c9; color: var(--purple); }
+
+    /* ── EDUCATION ── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .edu-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+    }
+
+    .edu-degree {
+      font-size: .95rem;
+      font-weight: 700;
+      margin-bottom: .15rem;
+    }
+
+    .edu-school {
+      font-size: .88rem;
+      color: var(--accent2);
+      font-weight: 600;
+      margin-bottom: .15rem;
+    }
+
+    .edu-date {
+      font-size: .78rem;
+      color: var(--muted);
+    }
+
+    /* ── ACHIEVEMENTS ── */
+    .achievement-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+    }
+
+    .achievement {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .4rem 1rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: .88rem;
+      color: var(--text);
+    }
+
+    .achievement .icon { color: var(--yellow); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .resume-header { flex-direction: column; }
+      .resume-header-right { align-items: flex-start; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .job-meta { text-align: left; }
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">AV<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Portfolio</a></li>
+    <li><a href="resume.html" class="active">Resume</a></li>
+    <li><a href="mailto:ankit.vrm2@gmail.com">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="resume-header">
+    <div class="resume-header-left">
+      <h1>Ankit Verma</h1>
+      <p class="title">Data Science Analyst &amp; Senior BI Engineer</p>
+      <p class="subtitle">
+        8 years of experience driving business impact through advanced analytics.
+        Specialised in ML, demand forecasting, and large-scale data solutions across
+        e-commerce and consulting domains.
+      </p>
+    </div>
+    <div class="resume-header-right">
+      <a href="mailto:ankit.vrm2@gmail.com" class="contact-item">✉ ankit.vrm2@gmail.com</a>
+      <a href="https://github.com/ankitv0407" target="_blank" class="contact-item">⌥ github.com/ankitv0407</a>
+      <a href="https://linkedin.com/in/ankitv0407" target="_blank" class="contact-item">in linkedin.com/in/ankitv0407</a>
+      <a href="Resume_AnkitVerma_20241104.docx" download class="btn-download">↓ Download PDF</a>
+    </div>
+  </header>
+
+  <!-- EXPERIENCE -->
+  <div class="section">
+    <p class="section-heading">Work Experience</p>
+
+    <!-- Amazon -->
+    <div class="job">
+      <div class="job-header">
+        <div class="job-company">Amazon <span>· Data Science Analyst</span></div>
+        <div class="job-meta">Mar 2020 – Present<br>Bengaluru, India</div>
+      </div>
+
+      <!-- Project 1 -->
+      <div class="project-block">
+        <div class="project-block-title">Bot Detection for Traffic Quality — Amazon Ads</div>
+        <div class="project-block-role">Lead DS + BI Design &amp; Development</div>
+        <div class="impact-row">
+          <span class="impact-badge">💰 $50MM annualized savings</span>
+          <span class="impact-badge">💰 $36MM advertiser spend protected</span>
+          <span class="impact-badge">⚖️ Digital Markets Act compliance</span>
+        </div>
+        <ul>
+          <li>Identified and blocked low-quality publishers, saving <strong>$50MM annualized</strong> spend for advertisers; led BI solution design and development end-to-end.</li>
+          <li>Reduced advertiser spend loss by <strong>$36MM annualized</strong> by invalidating robotic traffic — deployed keyword-based algorithms to detect bot activity in search queries under attack.</li>
+          <li>Led team's compliance efforts for the <strong>Digital Markets Act</strong>, preventing penalties of up to 10% of global revenue.</li>
+          <li>Benchmarked traffic quality bot-detection signals against parallel indicators; promoted adopted signal across the org.</li>
+          <li>Owned WBR metrics and insight generation; built frameworks for weekly root-cause analysis of metric deviations and supervised on-calls to mitigate issues.</li>
+        </ul>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-block">
+        <div class="project-block-title">Demand Forecasting for Workforce Staffing — ERC</div>
+        <div class="project-block-role">ETL · Forecasting · Automation · Causal Impact Analysis</div>
+        <div class="impact-row">
+          <span class="impact-badge">📈 10% YoY accuracy improvement</span>
+          <span class="impact-badge">⚙️ Full-cycle automation</span>
+        </div>
+        <ul>
+          <li>Built and maintained production-grade forecasts for two markets; improved forecast accuracy <strong>10% YoY</strong> by identifying key drivers and sourcing targeted inputs.</li>
+          <li>Automated end-to-end forecasting workflow: from input data generation through business-insight-driven adjustments to performance reporting.</li>
+          <li>Built automated vendor-performance monitoring with corrective-action recommendations triggered on recurring SLA breaches.</li>
+          <li>Conducted causal factor analysis to estimate impact of new project launches.</li>
+          <li>Sourced novel datasets (weather, employee absence) and built data pipelines to feed forecasting models for further accuracy gains.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Mu Sigma -->
+    <div class="job">
+      <div class="job-header">
+        <div class="job-company">Mu Sigma <span>· Decision Scientist</span></div>
+        <div class="job-meta">Nov 2016 – Mar 2020<br>Bengaluru, India</div>
+      </div>
+
+      <!-- Project 1 -->
+      <div class="project-block">
+        <div class="project-block-title">Test-and-Learn Analytics — Home Improvement Retailer</div>
+        <div class="project-block-role">Team Lead (6 members)</div>
+        <ul>
+          <li>Enhanced sales impact analysis framework — key work: feature selection, weather-variation accounting, and seamless insight-generation pipeline.</li>
+          <li>Built a customer-level event-impact framework by identifying control customers and measuring statistically significant treatment effects.</li>
+        </ul>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-block">
+        <div class="project-block-title">Demand Forecasting — Global Supply Chain, Medical Device Manufacturer</div>
+        <div class="impact-row">
+          <span class="impact-badge">📈 ~10% accuracy gains</span>
+        </div>
+        <ul>
+          <li>Replaced naive and exponential-smoothing baselines with a standardised demand forecasting framework across business units, achieving <strong>~10% accuracy gains</strong>.</li>
+          <li>Segmented product-location combinations by forecastability to enable segment-specific strategies instead of a one-size-fits-all approach.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <p class="section-heading">Skills &amp; Tools</p>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <span class="skill-label">Languages</span>
+        <div class="tags">
+          <span class="tag blue">Python</span>
+          <span class="tag blue">SQL</span>
+          <span class="tag blue">R</span>
+          <span class="tag blue">Scala</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Big Data</span>
+        <div class="tags">
+          <span class="tag purple">PySpark</span>
+          <span class="tag purple">Spark</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Cloud</span>
+        <div class="tags">
+          <span class="tag yellow">AWS</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Visualisation</span>
+        <div class="tags">
+          <span class="tag">Power BI</span>
+          <span class="tag">Tableau</span>
+          <span class="tag">QuickSight</span>
+          <span class="tag">Excel</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Expertise</span>
+        <div class="tags">
+          <span class="tag green">ML &amp; Statistical Modelling</span>
+          <span class="tag green">Demand Forecasting</span>
+          <span class="tag green">ETL &amp; Data Pipelines</span>
+          <span class="tag green">A/B Testing</span>
+          <span class="tag green">Causal Inference</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <p class="section-heading">Education</p>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">PGDML &amp; AI</div>
+        <div class="edu-school">IIIT Bangalore</div>
+        <div class="edu-date">Feb 2020 – Feb 2021</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">B.Tech — Electrical Engineering</div>
+        <div class="edu-school">L.N.C.T. Bhopal</div>
+        <div class="edu-date">June 2012 – May 2016</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACHIEVEMENTS -->
+  <div class="section">
+    <p class="section-heading">Achievements</p>
+    <div class="achievement-list">
+      <div class="achievement"><span class="icon">🏆</span> Impact Award — delivered project with measurable business impact</div>
+      <div class="achievement"><span class="icon">⭐</span> NTSE Scholar</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
