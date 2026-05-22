@@ -8,17 +8,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0a0f1e;
-      --bg2: #0f1629;
-      --bg3: #162040;
-      --border: #1e2d52;
-      --text: #e6edf3;
-      --muted: #8b949e;
-      --accent: #58a6ff;
-      --accent2: #3fb950;
-      --accent3: #f78166;
-      --purple: #bc8cff;
-      --yellow: #e3b341;
+      --bg: #f8fafc;
+      --bg2: #ffffff;
+      --bg3: #f1f5f9;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --muted: #64748b;
+      --accent: #0284c7;
+      --accent2: #0d9488;
+      --accent3: #e11d48;
+      --purple: #7c3aed;
+      --yellow: #d97706;
     }
 
     html { scroll-behavior: smooth; }
@@ -36,7 +36,7 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(13,17,23,.85);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 0 2rem;
@@ -101,6 +101,26 @@
       flex-direction: column;
       justify-content: center;
       padding-top: 80px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0c4a6e 100%);
+    }
+
+    #hero .hero-greeting,
+    #hero .hero-name,
+    #hero .hero-bio,
+    #hero .hero-scroll { color: #e2e8f0; }
+
+    #hero .hero-title { color: #94a3b8; }
+
+    #hero .scroll-line { background: #334155; }
+
+    #hero .btn-outline {
+      color: #f8fafc;
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    #hero .btn-outline:hover {
+      color: var(--accent);
+      border-color: var(--accent);
     }
 
     .hero-greeting {
@@ -235,11 +255,11 @@
       color: var(--muted);
     }
 
-    .tag.green { border-color: #238636; color: var(--accent2); }
-    .tag.blue  { border-color: #1f6feb; color: var(--accent); }
-    .tag.purple { border-color: #6e40c9; color: var(--purple); }
-    .tag.yellow { border-color: #9e6a03; color: var(--yellow); }
-    .tag.red   { border-color: #b62324; color: var(--accent3); }
+    .tag.green  { background: #ecfdf5; border-color: #6ee7b7; color: #065f46; }
+    .tag.blue   { background: #e0f2fe; border-color: #7dd3fc; color: #0369a1; }
+    .tag.purple { background: #f5f3ff; border-color: #c4b5fd; color: #6d28d9; }
+    .tag.yellow { background: #fffbeb; border-color: #fde68a; color: #92400e; }
+    .tag.red    { background: #fef2f2; border-color: #fca5a5; color: #991b1b; }
 
     /* ── EXPERIENCE ── */
     .timeline { position: relative; padding-left: 1.5rem; }
@@ -411,12 +431,12 @@
     footer {
       text-align: center;
       padding: 2rem;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
+      background: #0f172a;
+      color: rgba(255,255,255,0.45);
       font-size: .8rem;
     }
 
-    footer a { color: var(--accent); text-decoration: none; }
+    footer a { color: #93c5fd; text-decoration: none; }
 
     /* ── DIVIDER ── */
     .divider {

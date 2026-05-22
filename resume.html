@@ -8,17 +8,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0a0f1e;
-      --bg2: #0f1629;
-      --bg3: #162040;
-      --border: #1e2d52;
-      --text: #e6edf3;
-      --muted: #8b949e;
-      --accent: #58a6ff;
-      --accent2: #3fb950;
-      --purple: #bc8cff;
-      --yellow: #e3b341;
-      --accent3: #f78166;
+      --bg: #f8fafc;
+      --bg2: #ffffff;
+      --bg3: #f1f5f9;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --muted: #64748b;
+      --accent: #0284c7;
+      --accent2: #0d9488;
+      --purple: #7c3aed;
+      --yellow: #d97706;
+      --accent3: #e11d48;
     }
 
     html { scroll-behavior: smooth; }
@@ -36,7 +36,7 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(13,17,23,.85);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 0 2rem;
@@ -269,9 +269,9 @@
       font-weight: 600;
       padding: .25rem .75rem;
       border-radius: 99px;
-      background: #1c2b1e;
-      border: 1px solid #238636;
-      color: var(--accent2);
+      background: #ecfdf5;
+      border: 1px solid #6ee7b7;
+      color: #065f46;
     }
 
     /* ── SKILLS ── */
@@ -308,10 +308,10 @@
       color: var(--muted);
     }
 
-    .tag.blue   { border-color: #1f6feb; color: var(--accent); }
-    .tag.green  { border-color: #238636; color: var(--accent2); }
-    .tag.yellow { border-color: #9e6a03; color: var(--yellow); }
-    .tag.purple { border-color: #6e40c9; color: var(--purple); }
+    .tag.blue   { background: #e0f2fe; border-color: #7dd3fc; color: #0369a1; }
+    .tag.green  { background: #ecfdf5; border-color: #6ee7b7; color: #065f46; }
+    .tag.yellow { background: #fffbeb; border-color: #fde68a; color: #92400e; }
+    .tag.purple { background: #f5f3ff; border-color: #c4b5fd; color: #6d28d9; }
 
     /* ── EDUCATION ── */
     .edu-grid {
