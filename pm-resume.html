@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ankit Verma — Product Manager Resume</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f8fafc;
+      --bg2: #ffffff;
+      --bg3: #f1f5f9;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --muted: #64748b;
+      --accent: #7c3aed;
+      --accent-light: #ede9fe;
+      --accent2: #0d9488;
+      --yellow: #d97706;
+      --green: #065f46;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-logo { font-weight: 700; font-size: 1.1rem; color: var(--text); text-decoration: none; letter-spacing: -.5px; }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .9rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a.active { color: var(--accent); font-weight: 600; }
+
+    /* ── LAYOUT ── */
+    .page { max-width: 860px; margin: 0 auto; padding: 2rem 2rem 4rem; }
+
+    /* ── HEADER ── */
+    .resume-header {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 60%, #4c1d95 100%);
+      color: #fff;
+      border-radius: 14px;
+      padding: 2.5rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .resume-header h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -1px; margin-bottom: .2rem; }
+
+    .resume-header .title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #c4b5fd;
+      margin-bottom: .5rem;
+    }
+
+    .resume-header .subtitle {
+      font-size: .85rem;
+      color: rgba(255,255,255,.7);
+      max-width: 460px;
+      line-height: 1.65;
+    }
+
+    .resume-header-right {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      align-items: flex-end;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .82rem;
+      color: rgba(255,255,255,.8);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .contact-item:hover { color: #fff; }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      margin-top: .5rem;
+      padding: .5rem 1.1rem;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      color: #fff;
+      font-size: .82rem;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background .2s;
+    }
+
+    .btn-download:hover { background: rgba(255,255,255,.25); }
+
+    /* ── IMPACT STRIP ── */
+    .impact-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: .75rem;
+      margin-bottom: 2rem;
+    }
+
+    .impact-tile {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      text-align: center;
+    }
+
+    .impact-tile .value {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -.5px;
+      line-height: 1.1;
+    }
+
+    .impact-tile .label {
+      font-size: .72rem;
+      color: var(--muted);
+      margin-top: .2rem;
+      line-height: 1.4;
+    }
+
+    /* ── SECTION ── */
+    .section { margin-bottom: 2.5rem; }
+
+    .section-heading {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-bottom: .5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── COMPETENCIES ── */
+    .comp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: .75rem;
+    }
+
+    .comp-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: .85rem 1rem;
+    }
+
+    .comp-card h3 {
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      margin-bottom: .5rem;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+
+    .tag {
+      display: inline-block;
+      padding: .18rem .6rem;
+      border-radius: 99px;
+      font-size: .75rem;
+      font-weight: 500;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .tag.purple { background: #f5f3ff; border-color: #c4b5fd; color: #6d28d9; }
+    .tag.green  { background: #ecfdf5; border-color: #6ee7b7; color: #065f46; }
+    .tag.yellow { background: #fffbeb; border-color: #fde68a; color: #92400e; }
+    .tag.blue   { background: #e0f2fe; border-color: #7dd3fc; color: #0369a1; }
+
+    /* ── EXPERIENCE ── */
+    .job { margin-bottom: 2rem; }
+
+    .job-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: .75rem;
+    }
+
+    .job-company { font-size: 1.05rem; font-weight: 700; }
+    .job-company span { color: var(--accent); }
+    .job-meta { font-size: .82rem; color: var(--muted); text-align: right; line-height: 1.5; }
+
+    .exp-list { list-style: none; display: flex; flex-direction: column; gap: .45rem; }
+
+    .exp-list li {
+      font-size: .9rem;
+      color: var(--text);
+      padding-left: 1.1rem;
+      position: relative;
+      line-height: 1.65;
+    }
+
+    .exp-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: .7rem;
+      top: .2rem;
+    }
+
+    .exp-list li strong { color: var(--accent); }
+
+    /* ── PROJECT BLOCK ── */
+    .project-block {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 1.1rem 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-block:last-child { margin-bottom: 0; }
+
+    .project-header-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: .25rem;
+    }
+
+    .project-block-title { font-size: .95rem; font-weight: 700; color: var(--text); }
+
+    .project-block-role {
+      font-size: .75rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: .6rem;
+    }
+
+    .impact-row { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: .65rem; }
+
+    .impact-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      font-size: .75rem;
+      font-weight: 600;
+      padding: .2rem .65rem;
+      border-radius: 99px;
+      background: #ecfdf5;
+      border: 1px solid #6ee7b7;
+      color: #065f46;
+    }
+
+    .project-block ul { list-style: none; padding: 0; }
+
+    .project-block li {
+      font-size: .87rem;
+      color: var(--muted);
+      line-height: 1.7;
+      padding-left: 1rem;
+      position: relative;
+      margin-bottom: .2rem;
+    }
+
+    .project-block li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent2);
+      font-size: .72rem;
+      top: .12rem;
+    }
+
+    .project-block li strong { color: #065f46; font-weight: 600; }
+
+    /* ── COMPANY GROUP ── */
+    .company-group { margin-bottom: 1.75rem; }
+
+    .company-label {
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: .75rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .company-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── EDUCATION ── */
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .edu-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+    }
+
+    .edu-degree { font-size: .95rem; font-weight: 700; margin-bottom: .15rem; }
+    .edu-school { font-size: .88rem; color: var(--accent); font-weight: 600; margin-bottom: .15rem; }
+    .edu-date { font-size: .78rem; color: var(--muted); }
+
+    /* ── ACHIEVEMENTS ── */
+    .achievement-list { display: flex; flex-wrap: wrap; gap: .6rem; }
+
+    .achievement {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .4rem 1rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: .88rem;
+    }
+
+    .achievement .icon { color: var(--yellow); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #1e1b4b;
+      color: rgba(255,255,255,.4);
+      font-size: .8rem;
+    }
+
+    footer a { color: #c4b5fd; text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .resume-header { flex-direction: column; }
+      .resume-header-right { align-items: flex-start; }
+      .edu-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      .page { padding: 1.5rem 1.25rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">AV<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Portfolio</a></li>
+    <li><a href="resume.html">DS Resume</a></li>
+    <li><a href="pm-resume.html" class="active">PM Resume</a></li>
+    <li><a href="mailto:ankit.vrm2@gmail.com">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="resume-header">
+    <div>
+      <h1>Ankit Verma</h1>
+      <p class="title">Senior Product Manager — Data &amp; AI Products</p>
+      <p class="subtitle">
+        10 years defining and shipping data-driven products at Amazon and Mu Sigma.
+        Track record of translating complex ML and analytics capabilities into
+        product strategies that have generated $700M+ in annualized business value.
+      </p>
+    </div>
+    <div class="resume-header-right">
+      <a href="mailto:ankit.vrm2@gmail.com" class="contact-item">✉ ankit.vrm2@gmail.com</a>
+      <a href="https://github.com/ankitv0407" target="_blank" class="contact-item">⌥ github.com/ankitv0407</a>
+      <a href="https://www.linkedin.com/in/ankit-v-617b7589/" target="_blank" class="contact-item">in LinkedIn</a>
+      <a href="resume.html" class="btn-download">↗ View DS Resume</a>
+    </div>
+  </header>
+
+  <!-- IMPACT STRIP -->
+  <div class="impact-strip">
+    <div class="impact-tile">
+      <div class="value">$700M+</div>
+      <div class="label">Annualized business value delivered</div>
+    </div>
+    <div class="impact-tile">
+      <div class="value">5</div>
+      <div class="label">Products launched across Retail & Ads</div>
+    </div>
+    <div class="impact-tile">
+      <div class="value">EU + WW</div>
+      <div class="label">Scope of product launches</div>
+    </div>
+    <div class="impact-tile">
+      <div class="value">10 yrs</div>
+      <div class="label">Product & analytics leadership</div>
+    </div>
+  </div>
+
+  <!-- CORE COMPETENCIES -->
+  <div class="section">
+    <p class="section-heading">Core Competencies</p>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <h3>Product Strategy</h3>
+        <div class="tags">
+          <span class="tag purple">Roadmapping</span>
+          <span class="tag purple">Business Case Dev.</span>
+          <span class="tag purple">Go-to-Market</span>
+          <span class="tag purple">OKR Definition</span>
+        </div>
+      </div>
+      <div class="comp-card">
+        <h3>Execution</h3>
+        <div class="tags">
+          <span class="tag blue">PRD / Spec Writing</span>
+          <span class="tag blue">Agile / Scrum</span>
+          <span class="tag blue">Cross-functional Leadership</span>
+          <span class="tag blue">Launch Management</span>
+        </div>
+      </div>
+      <div class="comp-card">
+        <h3>Data &amp; Analytics</h3>
+        <div class="tags">
+          <span class="tag green">A/B Testing &amp; Experimentation</span>
+          <span class="tag green">Causal Inference</span>
+          <span class="tag green">Metrics Definition</span>
+          <span class="tag green">SQL · Python</span>
+        </div>
+      </div>
+      <div class="comp-card">
+        <h3>Domain</h3>
+        <div class="tags">
+          <span class="tag yellow">AI / ML Products</span>
+          <span class="tag yellow">E-commerce</span>
+          <span class="tag yellow">Supply Chain</span>
+          <span class="tag yellow">Ad Tech</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section">
+    <p class="section-heading">Work Experience</p>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-company">Amazon <span>· Senior Product Manager (Data &amp; AI)</span></div>
+        <div class="job-meta">Mar 2020 – Present<br>Bengaluru, India</div>
+      </div>
+      <ul class="exp-list">
+        <li>Owned product strategy and execution roadmap for ML and analytics products across Amazon Retail and Amazon Ads, delivering <strong>$700M+</strong> in annualized business impact.</li>
+        <li>Defined product requirements, success metrics, and go-to-market plans for 3 major product launches — collaborating with engineering, finance, legal, and operations stakeholders.</li>
+        <li>Led Digital Markets Act compliance product workstream, defining requirements to prevent penalties of up to 10% of global revenue.</li>
+        <li>Drove org-wide adoption of traffic quality signals by aligning stakeholders across multiple business units on a shared measurement framework.</li>
+        <li>Built and maintained business review (WBR) infrastructure and root-cause analysis frameworks to monitor product health and drive rapid incident resolution.</li>
+        <li>Partnered with GenAI teams (Amazon Bedrock, LangChain, Strands, AgentCore) to define product requirements for next-generation AI-powered data products.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-company">Mu Sigma <span>· Decision Scientist / Product Lead</span></div>
+        <div class="job-meta">Nov 2016 – Mar 2020<br>Bengaluru, India</div>
+      </div>
+      <ul class="exp-list">
+        <li>Led product delivery for analytics and ML platforms serving Fortune 500 clients in retail and healthcare, managing a cross-functional team of 6.</li>
+        <li>Defined problem statements, data requirements, and success metrics in collaboration with client stakeholders across supply chain, marketing, and operations.</li>
+        <li>Translated ambiguous business challenges into structured product roadmaps with clear KPIs, timelines, and ownership.</li>
+        <li>Delivered test-and-learn infrastructure and demand forecasting platforms that became embedded in client operational processes.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <p class="section-heading">Key Products &amp; Initiatives</p>
+
+    <div class="company-group">
+      <div class="company-label">Amazon</div>
+
+      <div class="project-block">
+        <div class="project-header-row">
+          <div class="project-block-title">Catalog Profitability Strategy — Amazon Retail</div>
+        </div>
+        <div class="project-block-role">Product Owner · Business Strategy · Cross-functional Launch</div>
+        <div class="impact-row">
+          <span class="impact-badge">💰 $295M annualized — EU launch</span>
+          <span class="impact-badge">💰 $395M annualized — WW</span>
+        </div>
+        <ul>
+          <li>Identified a multi-hundred-million dollar profitability opportunity in Amazon's 1P catalog by framing the problem space, scoping the analysis, and aligning senior stakeholders on a strategic framework.</li>
+          <li>Defined product requirements and success criteria for an EU program to programmatically block unprofitable vendor offers from the active catalog; led cross-functional execution with engineering, vendor management, and finance, delivering <strong>$295M annualized</strong> improvement.</li>
+          <li>Owned the product vision for a purchase-intent signal framework enabling a strategic 1P→3P assortment rebalancing; defined data requirements, evaluation metrics, and rollout plan, driving <strong>$395M annualized WW</strong> profitability improvement without compromising customer experience.</li>
+        </ul>
+      </div>
+
+      <div class="project-block">
+        <div class="project-header-row">
+          <div class="project-block-title">Traffic Quality Product — Amazon Ads</div>
+        </div>
+        <div class="project-block-role">Product Lead · Ad Tech · Policy &amp; Compliance</div>
+        <div class="impact-row">
+          <span class="impact-badge">💰 $50MM annualized savings</span>
+          <span class="impact-badge">💰 $36MM advertiser spend protected</span>
+          <span class="impact-badge">⚖️ Digital Markets Act compliant</span>
+        </div>
+        <ul>
+          <li>Defined and owned the product roadmap for Amazon Ads' traffic quality initiative — from signal discovery through detection algorithm design to BI reporting infrastructure.</li>
+          <li>Wrote requirements for a publisher-blocking product that saved <strong>$50MM annualized</strong>; partnered with engineering to ship a keyword-based detection system that protected a further <strong>$36MM</strong> in advertiser spend.</li>
+          <li>Led cross-functional legal, engineering, and policy teams to deliver Digital Markets Act compliance requirements on schedule, preventing potential penalties of up to 10% of global revenue.</li>
+          <li>Drove adoption of traffic quality signals across the organisation by defining a benchmarking framework and building consensus with product and business stakeholders.</li>
+        </ul>
+      </div>
+
+      <div class="project-block">
+        <div class="project-header-row">
+          <div class="project-block-title">Workforce Demand Forecasting Product — Amazon ERC</div>
+        </div>
+        <div class="project-block-role">Product Owner · Forecasting Platform · Automation</div>
+        <div class="impact-row">
+          <span class="impact-badge">📈 10% YoY accuracy improvement</span>
+          <span class="impact-badge">⚙️ Full-cycle automation</span>
+        </div>
+        <ul>
+          <li>Owned the product roadmap for a workforce staffing forecasting platform across two markets; defined data ingestion requirements, model accuracy KPIs, and stakeholder reporting specs.</li>
+          <li>Drove end-to-end automation of the forecasting workflow — eliminating manual handoffs from data sourcing through business-insight adjustments to performance monitoring — improving forecast accuracy <strong>10% YoY</strong>.</li>
+          <li>Defined requirements for a vendor performance monitoring product with automated SLA-breach alerts, reducing response time on operational issues.</li>
+          <li>Identified and prioritised novel data sources (weather, employee absence) to feed model inputs, translating operational domain knowledge into product requirements.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="company-group">
+      <div class="company-label">Mu Sigma</div>
+
+      <div class="project-block">
+        <div class="project-header-row">
+          <div class="project-block-title">Test-and-Learn Platform — Fortune 500 Home Improvement Retailer</div>
+        </div>
+        <div class="project-block-role">Product Lead · Team Lead (6 members) · Experimentation Infrastructure</div>
+        <ul>
+          <li>Defined the product vision for a test-and-learn measurement platform; led a 6-member cross-functional team to design and deliver the core infrastructure used for promotion impact measurement.</li>
+          <li>Wrote requirements for a customer-level causal matching framework (Diff-in-Differences, propensity score matching) enabling the client to measure statistically rigorous treatment effects — replacing ad hoc analysis with a repeatable product.</li>
+          <li>Delivered enhancements to the sales impact analysis module including feature selection, weather-variation controls, and an automated insight-generation pipeline adopted across business units.</li>
+        </ul>
+      </div>
+
+      <div class="project-block">
+        <div class="project-header-row">
+          <div class="project-block-title">Demand Forecasting Platform — Global Medical Device Manufacturer</div>
+        </div>
+        <div class="project-block-role">Product Strategy · Supply Chain · Time Series</div>
+        <div class="impact-row">
+          <span class="impact-badge">📈 ~10% accuracy gains</span>
+        </div>
+        <ul>
+          <li>Defined the product strategy to replace fragmented, naive forecasting approaches with a standardised platform across multiple business units — achieving <strong>~10% accuracy gains</strong> across the global supply chain.</li>
+          <li>Designed a product segmentation framework to classify product-location combinations by forecastability, enabling segment-specific forecasting strategies rather than a one-size-fits-all approach.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <p class="section-heading">Skills &amp; Tools</p>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <h3>Product</h3>
+        <div class="tags">
+          <span class="tag purple">Roadmapping</span>
+          <span class="tag purple">PRD Writing</span>
+          <span class="tag purple">OKRs / KPIs</span>
+          <span class="tag purple">Agile / Scrum</span>
+          <span class="tag purple">User Stories</span>
+        </div>
+      </div>
+      <div class="comp-card">
+        <h3>Data &amp; Analysis</h3>
+        <div class="tags">
+          <span class="tag blue">SQL</span>
+          <span class="tag blue">Python</span>
+          <span class="tag blue">A/B Testing</span>
+          <span class="tag blue">Causal Inference</span>
+          <span class="tag blue">Experimentation</span>
+        </div>
+      </div>
+      <div class="comp-card">
+        <h3>AI / ML Fluency</h3>
+        <div class="tags">
+          <span class="tag green">LLMs &amp; GenAI</span>
+          <span class="tag green">NLP</span>
+          <span class="tag green">Forecasting Models</span>
+          <span class="tag green">ML Pipelines</span>
+        </div>
+      </div>
+      <div class="comp-card">
+        <h3>Tools &amp; Platforms</h3>
+        <div class="tags">
+          <span class="tag yellow">AWS (Bedrock, SageMaker)</span>
+          <span class="tag yellow">QuickSight</span>
+          <span class="tag yellow">Tableau</span>
+          <span class="tag yellow">Power BI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <p class="section-heading">Education</p>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">PGDML &amp; AI</div>
+        <div class="edu-school">IIIT Bangalore</div>
+        <div class="edu-date">Feb 2020 – Feb 2021</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">B.Tech — Electrical Engineering</div>
+        <div class="edu-school">L.N.C.T. Bhopal</div>
+        <div class="edu-date">June 2012 – May 2016</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACHIEVEMENTS -->
+  <div class="section">
+    <p class="section-heading">Achievements</p>
+    <div class="achievement-list">
+      <div class="achievement"><span class="icon">🏆</span> Impact Award — delivered product with measurable business impact</div>
+      <div class="achievement"><span class="icon">⭐</span> NTSE Scholar</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>Designed &amp; built by <a href="https://github.com/ankitv0407">Ankit Verma</a> · 2025</p>
+</footer>
+
+</body>
+</html>
